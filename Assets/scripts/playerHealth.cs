@@ -21,5 +21,6 @@ public class playerHealth : MonoBehaviour
     {
         // You enter stuff here that needs to happen on death!
         deathText.SetActive(true);
+        
     }
 }
