@@ -6,10 +6,14 @@ public class collisionCheck : MonoBehaviour
 {
     public GameObject player;
     public GameObject shield;
+    public GameObject score;
+    public float distance;
+    public float perfectThreshHold;
     private void Start()
     {
         shield = GameObject.Find("Shield");
         player = GameObject.Find("Player");
+        score = GameObject.Find("scoreText");
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,6 +30,12 @@ public class collisionCheck : MonoBehaviour
         }
         if (collision.gameObject.tag == "Shield")
         {
+            distance = Vector2.Distance(collision.gameObject.transform.position, gameObject.transform.position);
+            print(distance);
+            if (distance <= 0.99)
+                {
+                    score.GetComponent<points>().score += 250;
+                }
             Destroy(this.gameObject);
         }
     }
